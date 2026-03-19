@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev",
-    "build": "vitepress build",
+    "build": "vitepress build && node scripts/encrypt.mjs",
     "preview": "vitepress preview"
   },
   "dependencies": {
+    "staticrypt": "^3.5.4",
     "vitepress": "^1.6.4"
   }
 }
