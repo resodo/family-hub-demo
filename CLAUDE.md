@@ -84,10 +84,31 @@
 9. 重要更新（检查结果、行程变动、重大决策）commit 到 Git
 10. **跨文件一致性：** 多个文件之间有关联数据，修改时必须同步
 
+## 多端交互
+
+### Claude Code（桌面端 · 主力）
+- 日常在电脑前的深度交互：排菜、更新健康档案、录入产检结果、管理待办
+- 直接读写项目文件，自动 commit，push 后网站同步更新
+
+### OpenClaw（移动端 · 轻量）
+- 外出/碎片时间的快速交互入口：查询信息、记录零碎更新
+- **家人协作**：小鱼也可以通过 OpenClaw 和 AI 对话，查询用药安全、菜谱、糖豆过敏注意事项等，不需要学 Claude Code
+- **Cron Job**：设置定期提醒（产检前一天提醒准备事项、补剂提醒、糖豆脱敏观察记录提醒）
+- 有项目文件访问权限，能读取和更新 context
+
+### 协作流
+```
+阿达（Claude Code）──→ 深度更新（排菜、录入检查结果、管理档案）
+                          ↓ git push
+小鱼（OpenClaw）──→ 轻量查询（能吃吗？该吃什么药？下次产检什么时候？）
+                          ↓ 也可以更新
+家人（网站）────→ 只读查看（看板展示最新信息）
+```
+
 ## 图片/截图协作
 
 - **Terminal 模式：** 用户将图片存入 `attachments/` 文件夹，告知文件名，我读取处理后**主动删除**
-- **Claude App 模式：** 可直接发图，无需经过 attachments
+- **OpenClaw：** 可直接发图
 - `attachments/` 已 gitignore，不进版本管理
 
 ## 项目结构与文件地图
@@ -149,9 +170,11 @@ family-hub-demo/
 
 ### 部署流程
 ```
-阿达和 AI 对话更新内容 → push main → GitHub Actions 自动触发
+阿达通过 Claude Code / OpenClaw 和 AI 对话更新内容
+→ push main → GitHub Actions 自动触发
 → VitePress build → Staticrypt encrypt → 部署
 → 小鱼和家人通过网站查看最新内容
+→ 小鱼也可以通过 OpenClaw 直接和 AI 对话查询/更新
 ```
 
 ### 增减页面
