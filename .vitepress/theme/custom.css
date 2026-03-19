@@ -1,0 +1,158 @@
+/* ===== Brand Colors: Polar Blue-Purple ===== */
+:root {
+  --vp-c-brand-1: #667eea;
+  --vp-c-brand-2: #5a6fd6;
+  --vp-c-brand-3: #4e60c2;
+  --vp-c-brand-soft: rgba(102, 126, 234, 0.14);
+
+  /* Button styling */
+  --vp-button-brand-bg: #667eea;
+  --vp-button-brand-hover-bg: #5a6fd6;
+  --vp-button-brand-active-bg: #4e60c2;
+}
+
+.dark {
+  --vp-c-brand-1: #8b9cf7;
+  --vp-c-brand-2: #7d8ee3;
+  --vp-c-brand-3: #6f80cf;
+  --vp-c-brand-soft: rgba(139, 156, 247, 0.14);
+
+  --vp-button-brand-bg: #667eea;
+  --vp-button-brand-hover-bg: #7d8ee3;
+  --vp-button-brand-active-bg: #8b9cf7;
+}
+
+/* ===== Hero Section Enhancement ===== */
+.VPHero {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(102, 126, 234, 0.08) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 50%,
+    rgba(167, 139, 250, 0.06) 0%,
+    transparent 50%
+  );
+  animation: heroShift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.dark .VPHero::before {
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(102, 126, 234, 0.12) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 50%,
+    rgba(167, 139, 250, 0.08) 0%,
+    transparent 50%
+  );
+}
+
+@keyframes heroShift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-5%, 3%) rotate(2deg); }
+}
+
+/* Hero text enhancements */
+.VPHero .name {
+  background: linear-gradient(135deg, #667eea 0%, #a78bfa 50%, #667eea 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.VPHero .tagline {
+  font-size: 20px !important;
+  opacity: 0.85;
+}
+
+/* ===== Feature Cards Enhancement ===== */
+.VPFeatures .VPFeature {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 12px !important;
+}
+
+.VPFeatures .VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.12);
+  border-color: var(--vp-c-brand-1) !important;
+}
+
+.dark .VPFeatures .VPFeature:hover {
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.08);
+}
+
+/* Feature title - add emoji spacing */
+.VPFeatures .VPFeature .title {
+  font-size: 16px !important;
+}
+
+.VPFeatures .VPFeature .details {
+  font-size: 14px !important;
+  color: var(--vp-c-text-2);
+}
+
+/* ===== Feature Grid: 3 columns on desktop ===== */
+.VPFeatures .VPFeature {
+  /* Features will naturally adapt based on VitePress grid */
+}
+
+/* ===== Smooth page transitions ===== */
+.VPContent {
+  transition: opacity 0.3s ease;
+}
+
+/* ===== Scrollbar styling ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
+
+/* ===== Better link hover effects ===== */
+.VPNavBarMenuLink .VPLink:hover,
+.VPSidebarItem .link:hover {
+  transition: color 0.2s ease;
+}
+
+/* ===== Home page specific ===== */
+.VPHome {
+  padding-bottom: 48px !important;
+}
+
+/* Feature icons (emoji) - larger display */
+.VPFeature .icon {
+  font-size: 28px;
+}
