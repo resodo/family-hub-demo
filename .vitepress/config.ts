@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   mpa: true,
+  base: '/family-hub-demo/',
   title: '小鱼一家',
   description: '家庭健康与生活管理',
   lang: 'zh-CN',
